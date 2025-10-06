@@ -1,6 +1,8 @@
 const WebSocket = require('ws');
 
-const wss = new WebSocket.Server({ port: 8080 });
+const PORT = process.env.PORT || 8080; // <-- use environment variable
+
+const wss = new WebSocket.Server({ port: PORT }); // <-- Render will provide this port
 const clients = new Map();
 const MAX_USERS = 2;
 
@@ -51,4 +53,5 @@ wss.on('connection', (ws) => {
     });
 });
 
-console.log("WebSocket 1-to-1 chat server for 2 users running on ws://localhost:8080");
+console.log(`WebSocket 1-to-1 chat server for 2 users running on ws://localhost:${PORT}`);
+console.log("hello")
